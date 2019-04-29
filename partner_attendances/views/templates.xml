@@ -1,0 +1,10 @@
+<odoo>
+
+    <template id="assets_backend_inherit_xmarts"  inherit_id="web.assets_backend" name="hr_attendance assets">
+        <xpath expr="//script[@src='/hr_attendance/static/src/js/kiosk_mode.js']" position="replace">
+            <script type="text/javascript" src="/xmarts_partner_attendances/static/src/js/kiosk_mode.js"></script>
+        </xpath>
+    </template>
+</odoo>
+
+
