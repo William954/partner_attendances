@@ -3,24 +3,6 @@
 from odoo import models, fields, api
 from datetime import datetime, date, time, timedelta
 
-# class xmarts_partner_attendances(models.Model):
-#     _name = 'xmarts_partner_attendances.xmarts_partner_attendances'
-
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
-
-# class ResPartnerAttendance(models.Model):
-#     _inherit = 'res.partner'
-
-#     is_within = fields.Boolean(string="¿Esta dentro de las instalaciones?", default=False)
-
-
 class PartnerAttendance(models.Model):
     _name = "res.partner.attendance"
     _description = "Partner Attendance"
