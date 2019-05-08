@@ -92,8 +92,5 @@
         </field>
     </record>
     <menuitem id="menu_partner_attendance_view_attendances" name="Partner Attendances" parent="hr_attendance.menu_hr_attendance_manage_attendances" groups="hr_attendance.group_hr_attendance_user" sequence="66" action="partner_attendance_action"/>
-<!--
-    <menuitem id="menu_partner_attendance_kiosk_mode" name=" Partner Kiosk Mode" parent="hr_attendance.menu_hr_attendance_manage_attendances" sequence="67" groups="hr_attendance.group_hr_attendance_user" action="partner_attendance_action_kiosk_mode"/>
-  -->
   </data>
 </odoo>
