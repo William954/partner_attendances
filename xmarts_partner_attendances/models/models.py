@@ -45,7 +45,7 @@ class PartnerAttendance(models.Model):
         self.check_out = datetime.now()
         self.state = 'outside'
 
-    @api.model
+    @api.one
     @api.depends('check_out', 'location_outt')
     def location_out(self):
         if self.check_out:
