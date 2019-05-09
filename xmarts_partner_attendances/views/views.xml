@@ -16,6 +16,9 @@
                           <field name="name" readonly="1"/>
                       </h3>
                   </div>
+                  <div align="center">
+                     <field name="photo_partner" widget="image" style="height: 120px; width: 120px;"/>
+                  </div>
                   <group>
                     <group>
                         <field name="partner_id"/>
@@ -29,17 +32,19 @@
                     <group>
                         <field name="subject"/>
                         <field name="ticket_number"/>
-                        <field name='id_photo'/>
-                        <field name='placas'/>
-                        <field name="photo_partner"/>
-                        <field name="photo_equipment"/>
                         <field name='comentario'/>
                     </group>
                   </group>
+                    <div class="address_format" align="center">
+                      <field name="id_photo" widget="image" style="height: 120px; width: 120px;"/><span> </span>
+                      <field name="photo_equipment" widget="image" style="height: 120px; width: 120px;"/><span> </span>
+                      <field name="placas" widget="image" style="height: 120px; width: 120px;"/><span> </span>
+                    </div>
                 </sheet>
             </form>
         </field>
     </record>
+
 
     <record model="ir.ui.view" id="partner_attendance_view_tree">
       <field name="name">partner_attendance_view_tree</field>
@@ -91,6 +96,37 @@
             </p>
         </field>
     </record>
-    <menuitem id="menu_partner_attendance_view_attendances" name="Partner Attendances" parent="hr_attendance.menu_hr_attendance_manage_attendances" groups="hr_attendance.group_hr_attendance_user" sequence="66" action="partner_attendance_action"/>
+
+
+
+    <menuitem id="menu_partner_attendance_view_attendances" name="Modo Kiosko Visitas" parent="hr_attendance.menu_hr_attendance_manage_attendances" groups="hr_attendance.group_hr_attendance_user" sequence="66" action="partner_attendance_action"/>
+
+      <record id="inherit_hr_attendance" model="ir.ui.view">
+              <field name="name">inherit.hr.attendance</field>
+              <field name="model">hr.attendance</field>
+              <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+              <field name="arch" type="xml">
+                <xpath expr="//field[@name='check_in']" position="after">
+                 <field name="location_in" />
+                </xpath>
+                <xpath expr="//field[@name='check_out']" position="after">
+                 <field name="location_outt" />
+                </xpath>
+              </field>
+      </record>
+
+      <record id="inherit_hr_attendance_tree" model="ir.ui.view">
+              <field name="name">inherit.hr.attendance.tree</field>
+              <field name="model">hr.attendance</field>
+              <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+              <field name="arch" type="xml">
+                <xpath expr="//field[@name='check_in']" position="after">
+                 <field name="location_in" />
+                </xpath>
+                <xpath expr="//field[@name='check_out']" position="after">
+                 <field name="location_outt" />
+                </xpath>
+              </field>
+      </record>
   </data>
 </odoo>
