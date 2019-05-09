@@ -13,7 +13,7 @@ class PartnerAttendance(models.Model):
     state = fields.Selection([('inside', 'Entrada'), ('outside', 'Salida')], default='inside')
     partner_id = fields.Many2one('res.partner', string="Visitante", required=True, ondelete='cascade', index=True)
     check_in = fields.Datetime(string="Ingreso", default=fields.Datetime.now, required=True)
-    location_in = fields.Char(string='En: ', default=lambda self: self.env.user.street, readonly=True)
+    location_in = fields.Char(string='En: ', default=lambda self: self.env.user.street, readonly=True, store=True)
     location_outt = fields.Char(string='En: ', compute='location_out', readonly=True, store=True)
     check_out = fields.Datetime(string="Salida")
     employee_id = fields.Many2one("hr.employee", string="¿A quien visita?")
@@ -55,12 +55,12 @@ class PartnerAttendance(models.Model):
 class InheritAttendance(models.Model):
     _inherit = 'hr.attendance'
 
-    location_in = fields.Char(string='En: ', default=lambda self: str(request.env.user.street))
-    location_outt = fields.Char(string='En: ', compute='location_out', store=True)
+    location_in = fields.Char(string='En: ', default=lambda self: request.env.user.street)
+    location_outt = fields.Char(string='En: ', compute='_location_out', store=True)
 
     @api.one
     @api.depends('check_out', 'location_outt')
-    def location_out(self):
+    def _location_out(self):
         if self.check_out:
             self.location_outt = str(request.env.user.street)
 
@@ -73,4 +73,3 @@ class InheritAttendance(models.Model):
     #             self.location_outt = current_login.name
 
     #     return
-        #test
