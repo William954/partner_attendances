@@ -73,3 +73,4 @@ class InheritAttendance(models.Model):
     #             self.location_outt = current_login.name
 
     #     return
+        #test
