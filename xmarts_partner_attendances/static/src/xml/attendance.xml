@@ -111,36 +111,36 @@
                     <div class="o_hr_attendance_user_badge o_home_menu_background">
                         <img class="img rounded-circle" t-attf-src="/web/image?model=hr.employee&amp;field=image_medium&amp;id=#{widget.attendance.employee_id[0]}" t-att-title="widget.employee_name" t-att-alt="widget.employee_name"/>
                     </div>
-                    <t t-if="widget.attendance.check_out">
-                        <h1 class="mb0">Goodbye <t t-esc="widget.employee_name"/>!</h1>
-                        <h2 class="o_hr_attendance_message_message mt4 mb24"/>
-                        <div class="alert alert-info h2 mt0" role="status">
-                            Checked out at <b><t t-esc="widget.attendance.check_out_time"/></b>
-                        </div>
-                        <h3 class="o_hr_attendance_random_message mb24"/>
-                        <div class="o_hr_attendance_warning_message mt24 alert alert-warning" style="display:none" role="alert"/>
-                    </t>
-                    <t t-else="">
-                        <h1 class="mb0">Welcome <t t-esc="widget.employee_name"/>!</h1>
-                        <h2 class="o_hr_attendance_message_message mt4 mb24"/>
-                        <div class="alert alert-info h2 mt0" role="status">
-                            Checked in at <b><t t-esc="widget.attendance.check_in_time"/></b>
-                        </div>
-                        <h3 class="o_hr_attendance_random_message mb24"/>
-                        <div class="o_hr_attendance_warning_message mt24 alert alert-warning" style="display:none" role="alert"/>
-                    </t>
-                 <div>
-                        <t t-if="widget.attendance.check_out">
-                            <button class="o_hr_attendance_button_dismiss btn btn-primary btn-lg" style="background-color:red;">
-                                <span class="text-capitalize" t-if="widget.attendance.check_out">Goodbye</span>
-                            </button>
+                    <div t-if="widget.attendance.check_out">
+                        <t>
+                            <h1 class="mb0">Goodbye <t t-esc="widget.employee_name"/>!</h1>
+                            <h2 class="o_hr_attendance_message_message mt4 mb24"/>
+                            <div class="alert alert-info h2 mt0" role="status">
+                                Checked out at <b><t t-esc="widget.attendance.check_out_time"/></b>
+                            </div>
+                            <h3 class="o_hr_attendance_random_message mb24"/>
+                            <div class="o_hr_attendance_warning_message mt24 alert alert-warning" style="display:none" role="alert"/>
                         </t>
+                        <button class="o_hr_attendance_button_dismiss btn btn-primary btn-lg" style="background-color:red;">
+                            <span class="text-capitalize">Goodbye</span>
+                        </button>
+                    </div>
+
+                    <div>
                         <t t-else="">
-                            <button class="o_hr_attendance_button_dismiss btn btn-primary btn-lg">
-                                <span class="text-capitalize">OK</span>
-                            </button>
+                            <h1 class="mb0">Welcome <t t-esc="widget.employee_name"/>!</h1>
+                            <h2 class="o_hr_attendance_message_message mt4 mb24"/>
+                            <div class="alert alert-info h2 mt0" role="status">
+                                Checked in at <b><t t-esc="widget.attendance.check_in_time"/></b>
+                            </div>
+                            <h3 class="o_hr_attendance_random_message mb24"/>
+                            <div class="o_hr_attendance_warning_message mt24 alert alert-warning" style="display:none" role="alert"/>
                         </t>
-                </div>
+                        <button class="o_hr_attendance_button_dismiss btn btn-primary btn-lg">
+                            <span class="text-capitalize" t-else="">OK</span>
+                        </button>
+                    </div>
+
                 </t>
                 <t t-else="">
                     <div class="alert alert-warning" role="alert">Invalid request, please return to the main menu.</div>
