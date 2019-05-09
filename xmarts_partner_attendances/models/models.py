@@ -58,7 +58,7 @@ class InheritAttendance(models.Model):
     location_in = fields.Char(string='En: ', default=lambda self: str(request.env.user.street))
     location_outt = fields.Char(string='En: ', compute='location_out', store=True)
 
-    @api.model
+    @api.one
     @api.depends('check_out', 'location_outt')
     def location_out(self):
         if self.check_out:
