@@ -4,6 +4,7 @@
         <div id="oe_hr_attendance_status" class="fa fa-circle" role="img" aria-label="Available" title="Available">
         </div>
     </t>
+
     <t t-name="HrAttendanceKioskMode">
         <div class="o_hr_attendance_kiosk_mode_container o_home_menu_background">
             <span class="o_hr_attendance_kiosk_backdrop"/>
@@ -128,10 +129,8 @@
                         <h3 class="o_hr_attendance_random_message mb24"/>
                         <div class="o_hr_attendance_warning_message mt24 alert alert-warning" style="display:none" role="alert"/>
                     </t>
-                    <button t-if="widget.attendance.check_out" class="o_hr_attendance_button_dismiss btn btn-primary btn-lg" style="background-color: red;">
+                    <button class="o_hr_attendance_button_dismiss btn btn-primary btn-lg">
                         <span class="text-capitalize" t-if="widget.attendance.check_out">Goodbye</span>
-                    </button>
-                    <button t-if="widget.attendance.check_in" class="o_hr_attendance_button_dismiss btn btn-primary btn-lg">
                         <span class="text-capitalize" t-else="">OK</span>
                     </button>
                 </t>

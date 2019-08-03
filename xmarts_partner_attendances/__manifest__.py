@@ -1,22 +1,23 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Partner Attendances",
+    'name': "xmarts_partner_attendances",
 
     'summary': """
-        Adecuacion al modulo de Asistencias para verificar la entrara y salida de personal externo""",
+        Short (1 phrase/line) summary of the module's purpose, used as
+        subtitle on modules listing or apps.openerp.com""",
 
     'description': """
-        Adecuacion al modulo de Asistencias que permite tomar las asistencias de personal externo a la empresa GTVP
+        Long description of module's purpose
     """,
 
-    'author': "GTVP",
-    'website': "https://gtvp.odoo.com/en_US/",
+    'author': "My Company",
+    'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
-    'category': 'Adecuacion',
-    'version': '1.0',
+    'category': 'Uncategorized',
+    'version': '0.1',
 
     # any module necessary for this one to work correctly
     'depends': ['base','hr_attendance'],
