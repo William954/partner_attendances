@@ -4,6 +4,18 @@ from odoo import models, fields, api
 from datetime import datetime, date, time, timedelta
 from odoo.http import request
 
+class LocationFields(models.Model):
+    _inherit = 'hr.attendance'
+
+    location_inn = fields.Char(string='En: ',default=lambda self: str(request.env.user.street))
+    location_outt = fields.Char(string='En: ',compute='location_out', store=True)
+
+
+    @api.one
+    @api.depends('check_out','location_outt')
+    def location_out(self):
+        if self.check_out:
+           self.location_outt = str(request.env.user.street)
 
 
 class PartnerAttendance(models.Model):
@@ -53,18 +65,6 @@ class PartnerAttendance(models.Model):
         if self.check_out:
            self.location_outt = self.env.user.street
 
-class InheritAttendance(models.Model):
-    _inherit = 'hr.attendance'
-
-    location_in = fields.Char(string='En: ',default=lambda self: str(request.env.user.street))
-    location_outt = fields.Char(string='En: ',compute='location_out', store=True)
-
-
-    @api.one
-    @api.depends('check_out','location_outt')
-    def location_out(self):
-        if self.check_out:
-           self.location_outt = str(request.env.user.street)
 
     # @api.one
     # def _get_current_login_user(self):
