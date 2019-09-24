@@ -33,6 +33,6 @@
         'demo/demo.xml',
     ],
     'qweb': [
-        "static/src/xml/attendance.xml", ],
+        'static/src/xml/attendance.xml' ],
    
 }
